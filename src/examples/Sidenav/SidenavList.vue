@@ -140,7 +140,7 @@ export default {
     signOut() {
       localStorage.removeItem("authentication");
       this.showAlert("info", `Sessão encerrada com sucesso!`, 6000, false);
-      window.location.href = "/sign-in";
+      window.location.href = "#/sign-in";
     },
   },
 };
