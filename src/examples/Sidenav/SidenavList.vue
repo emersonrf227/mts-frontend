@@ -86,7 +86,7 @@
         </sidenav-collapse>
       </li>
 
-      <li class="nav-item" @click="singOut()">
+      <li class="nav-item" @click="signOut()">
         <sidenav-collapse nav-text="Encerrar Sessão" to="/sign-in">
           <template #icon>
             <i
@@ -137,10 +137,10 @@ export default {
       this.$root.triggerAlertHide();
     },
 
-    singOut() {
+    signOut() {
       localStorage.removeItem("authentication");
       this.showAlert("info", `Sessão encerrada com sucesso!`, 6000, false);
-      window.location.href = "/sing-in";
+      window.location.href = "/sign-in";
     },
   },
 };
