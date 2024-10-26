@@ -11,10 +11,10 @@
       <div class="page-header min-vh-75">
         <div class="container">
           <div class="row">
-            <div class="mx-auto col-xl-4 col-lg-5 col-md-6 d-flex flex-column">
+            <div class="mx-auto col-xl-4 col-lg-5 col-md-6 d-flex flex-column ">
               <div class="mt-8 card card-plain">
-                <div class="pb-0 card-header text-start">
-                  <img :src="logo" width="300" alt="main_logo" />
+                <div class="pb-0 card-header text-start" style=" margin-top: -150px">
+                  <img :src="logo" width="200" alt="main_logo" />
 
                   <h3 class="font-weight-bolder text-info text-gradient">
                     Bem vindo
@@ -24,42 +24,21 @@
                 <div class="card-body">
                   <form @submit.prevent="signIn" role="form" class="text-start">
                     <label>Usuário</label>
-                    <vsud-input
-                      type="text"
-                      ref="username"
-                      placeholder="Usuário"
-                      name="user"
-                    />
+                    <vsud-input type="text" ref="username" placeholder="Usuário" name="user" />
                     <label>Senha</label>
-                    <vsud-input
-                      type="password"
-                      ref="password"
-                      placeholder="Senha"
-                      name="password"
-                    />
+                    <vsud-input type="password" ref="password" placeholder="Senha" name="password" />
                     <div class="text-center">
-                      <vsud-button
-                        class="my-4 mb-2"
-                        variant="gradient"
-                        color="info"
-                        full-width
-                        >Acessar</vsud-button
-                      >
+                      <vsud-button class="my-4 mb-2" variant="gradient" color="info" full-width>Acessar</vsud-button>
                     </div>
                   </form>
                 </div>
               </div>
             </div>
             <div class="col-md-6">
-              <div
-                class="top-0 oblique position-absolute h-100 d-md-block d-none me-n8"
-              >
-                <div
-                  class="bg-cover oblique-image position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"
-                  :style="{
-                    backgroundImage: `url(${bgImg})`,
-                  }"
-                ></div>
+              <div class="top-0 oblique position-absolute h-100 d-md-block d-none me-n8">
+                <div class="bg-cover oblique-image position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" :style="{
+                  backgroundImage: `url(${bgImg})`,
+                }"></div>
               </div>
             </div>
           </div>

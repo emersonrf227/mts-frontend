@@ -8,19 +8,23 @@
           <h6 class="mb-4">Abstecer conta</h6>
         </div>
 
-        <div
-          v-if="qrcode"
-          class="Loader-overlay"
-          style="
+        <div v-if="qrcode" class="Loader-overlay" style="
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
-          "
-        >
+          ">
           <qrcode-vue :value="qrcode" size="250" level="H" />
+          <p class="mt-4 font-weight-bold" style="display: flex; justify-content: center; flex-direction: column; width: 100%; align-items:center
+        ">
+            <label>Copiar EMV</label>
+
+            <i style='font-size: 25px' class="fa fa-copy" aria-hidden="true" @click="copyText"></i>
+          </p>
+
           <div class="align-items-center">
+
             <h2 class="mb-4">R$ {{ this.formattedValue }}</h2>
           </div>
           <div class="align-items-center">
@@ -32,59 +36,30 @@
         </div>
         <div v-if="!qrcode" class="Loader-overlay">
           <div class="bg-gradient-info border-radius-lg h-90">
-            <img
-              src="../../assets/img/shapes/waves-white.svg"
-              class="position-absolute h-40 w-50 top-0 d-lg-block d-none"
-              alt="waves"
-            />
-            <div
-              class="position-relative d-flex align-items-center justify-content-center h-100"
-            >
-              <img
-                class="w-40 position-relative z-index-2 pt-4"
-                src="../../assets/img/illustrations/rocket-white.png"
-                alt="rocket"
-              />
+            <img src="../../assets/img/shapes/waves-white.svg"
+              class="position-absolute h-40 w-50 top-0 d-lg-block d-none" alt="waves" />
+            <div class="position-relative d-flex align-items-center justify-content-center h-100">
+              <img class="w-40 position-relative z-index-2 pt-4" src="../../assets/img/illustrations/rocket-white.png"
+                alt="rocket" />
             </div>
           </div>
 
           <div class="col-md-4 text-end">
             <a href="javascript:;">
-              <i
-                class="text-sm fas fa-money text-secondary"
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                title="Recharge Pix"
-              ></i>
+              <i class="text-sm fas fa-money text-secondary" data-bs-toggle="tooltip" data-bs-placement="top"
+                title="Recharge Pix"></i>
             </a>
           </div>
           <form @submit.prevent="SendPixin" role="form" class="text-start">
             <label>Valor</label>
-            <vsud-input
-              type="text"
-              placeholder="10.00"
-              aria-label="Digite o valor"
-              step="0.01"
-              min="0"
-              ref="amount"
-            />
+            <vsud-input type="number" placeholder="10.00" aria-label="Digite o valor" step="0.01" min="0"
+              ref="amount" />
             <label>Descrição</label>
-            <vsud-input
-              type="text"
-              placeholder="Descrição"
-              aria-label="Descrição"
-              ref="description"
-            />
+            <vsud-input type="text" placeholder="Descrição" aria-label="Descrição" ref="description" />
 
             <div class="text-center">
-              <vsud-button
-                class="my-4 mb-2"
-                variant="gradient"
-                color="info"
-                full-width
-              >
-                Enviar</vsud-button
-              >
+              <vsud-button class="my-4 mb-2" variant="gradient" color="info" full-width>
+                Enviar</vsud-button>
             </div>
           </form>
         </div>
@@ -124,6 +99,16 @@ export default {
     };
   },
   methods: {
+
+    async copyText() {
+      try {
+        await navigator.clipboard.writeText(this.qrcode);
+        this.showAlert("info", "Chave copiada com sucesso!", 6000, false);
+
+      } catch (err) {
+        this.message = "Ocorreu um erro ao copiar.: " + err;
+      }
+    },
     showAlert(color, message, timeout, dismissible) {
       this.$root.triggerAlert(color, message, timeout, dismissible);
     },
@@ -274,6 +259,7 @@ export default {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
