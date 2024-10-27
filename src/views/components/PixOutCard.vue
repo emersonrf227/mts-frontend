@@ -220,7 +220,7 @@ export default {
         const data = {
           externalId: timestampInSeconds,
           keyType:
-            this.dataPix.keyType === "E-MAIL" ? "EMAIL" : this.dataPix.keyType,
+            this.dataPix.keyType === "E-MAIL" ? "EMAIL" : this.dataPix.keyType === 'CELULAR' ? 'PHONE' : this.dataPix.keyType,
           key: this.dataPix.dictKey,
           name: this.dataPix.name,
           amount: this.formattedValue,
