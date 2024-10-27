@@ -9,52 +9,29 @@
         </div>
 
         <div class="bg-gradient-info border-radius-lg h-90">
-          <img
-            src="../../assets/img/shapes/waves-white.svg"
-            class="position-absolute h-40 w-50 top-0 d-lg-block d-none"
-            alt="waves"
-          />
-          <div
-            class="position-relative d-flex align-items-center justify-content-center h-100"
-          >
-            <img
-              class="w-40 position-relative z-index-2 pt-4"
-              src="../../assets/img/illustrations/rocket-white.png"
-              alt="rocket"
-            />
+          <img src="../../assets/img/shapes/waves-white.svg" class="position-absolute h-40 w-50 top-0 d-lg-block d-none"
+            alt="waves" />
+          <div class="position-relative d-flex align-items-center justify-content-center h-100">
+            <img class="w-40 position-relative z-index-2 pt-4" src="../../assets/img/illustrations/rocket-white.png"
+              alt="rocket" />
           </div>
         </div>
 
         <div v-if="stageOne" class="Loader-overlay">
           <div class="col-md-4 text-end">
             <a href="javascript:;">
-              <i
-                class="text-sm fas fa-money text-secondary"
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                title="Recharge Pix"
-              ></i>
+              <i class="text-sm fas fa-money text-secondary" data-bs-toggle="tooltip" data-bs-placement="top"
+                title="Recharge Pix"></i>
             </a>
           </div>
           <form @submit.prevent="getDict" role="form" class="text-start">
             <label>Digite a chave pix</label>
-            <vsud-input
-              type="text"
-              placeholder="Chave Pix"
-              aria-label="Digite a chave Pix"
-              v-model="this.key"
-              ref="key"
-            />
+            <vsud-input type="text" placeholder="Chave Pix" aria-label="Digite a chave Pix" v-model="this.key"
+              ref="key" />
 
             <div class="text-center">
-              <vsud-button
-                class="my-4 mb-2"
-                variant="gradient"
-                color="info"
-                full-width
-              >
-                Consultar</vsud-button
-              >
+              <vsud-button class="my-4 mb-2" variant="gradient" color="info" full-width>
+                Consultar</vsud-button>
             </div>
           </form>
         </div>
@@ -62,12 +39,8 @@
         <div v-if="stageTwo" class="Loader-overlay">
           <div class="col-md-4 text-end">
             <a href="javascript:;">
-              <i
-                class="text-sm fas fa-money text-secondary"
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                title="Recharge Pix"
-              ></i>
+              <i class="text-sm fas fa-money text-secondary" data-bs-toggle="tooltip" data-bs-placement="top"
+                title="Recharge Pix"></i>
             </a>
           </div>
           <h6 class="mb-4">FAVORECIDO</h6>
@@ -82,23 +55,11 @@
           </div>
 
           <div class="text-center">
-            <vsud-button
-              class="my-3 mb-2"
-              variant="gradient"
-              color="info"
-              full-width
-              @click="OpStageTwo(true)"
-            >
+            <vsud-button class="my-3 mb-2" variant="gradient" color="info" full-width @click="OpStageTwo(true)">
               Avançar <i class="fas fa-arrow-circle-right"></i>
             </vsud-button>
 
-            <vsud-button
-              class="my-3 mb-2"
-              variant="gradient"
-              color="danger"
-              full-width
-              @click="OpStageTwo(false)"
-            >
+            <vsud-button class="my-3 mb-2" variant="gradient" color="danger" full-width @click="OpStageTwo(false)">
               <i class="fas fa-arrow-circle-left"></i> Voltar
             </vsud-button>
           </div>
@@ -107,32 +68,16 @@
         <div v-if="stageThree" class="Loader-overlay">
           <div class="col-md-4 text-end">
             <a href="javascript:;">
-              <i
-                class="text-sm fas fa-money text-secondary"
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                title="Recharge Pix"
-              ></i>
+              <i class="text-sm fas fa-money text-secondary" data-bs-toggle="tooltip" data-bs-placement="top"
+                title="Recharge Pix"></i>
             </a>
           </div>
           <form @submit.prevent="SendPixin" role="form" class="text-start">
             <label>Valor</label>
-            <vsud-input
-              type="text"
-              placeholder="10.00"
-              aria-label="Digite o valor"
-              step="0.01"
-              min="0"
-              ref="amount"
-            />
+            <vsud-input type="text" placeholder="10.00" aria-label="Digite o valor" step="0.01" min="0" ref="amount" />
 
             <div class="text-center">
-              <vsud-button
-                class="my-4 mb-2"
-                variant="gradient"
-                color="info"
-                full-width
-              >
+              <vsud-button class="my-4 mb-2" variant="gradient" color="info" full-width>
                 Pagar <i class="fas fa-location-arrow"></i>
               </vsud-button>
 
@@ -146,13 +91,7 @@
               </vsud-button> -->
             </div>
           </form>
-          <vsud-button
-            class="my-3 mb-2"
-            variant="gradient"
-            color="danger"
-            full-width
-            @click="OpStageTwo(false)"
-          >
+          <vsud-button class="my-3 mb-2" variant="gradient" color="danger" full-width @click="OpStageTwo(false)">
             <i class="fas fa-arrow-circle-left"></i> Retornar
           </vsud-button>
         </div>
@@ -231,7 +170,12 @@ export default {
       };
       try {
         const response = await apibanks.get(
-          `baas/pix/pix-search?dict=${this.key}`,
+          `baas/pix/pix-search?dict=`,
+          {
+            params: {
+              dict: this.key
+            }
+          },
           headers
         );
         if (response.status === 200 || response.status === 201) {
@@ -401,6 +345,7 @@ export default {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
