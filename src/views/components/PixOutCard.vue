@@ -163,20 +163,18 @@ export default {
       const authData = JSON.parse(localStorage.getItem("authentication"));
       this.dataUser = authData.data;
 
-      const headers = {
-        headers: {
-          Authorization: `Bearer ${this.dataUser.access_token}`,
-        },
-      };
+
       try {
         const response = await apibanks.get(
-          `baas/pix/pix-search?dict=`,
+          'baas/pix/pix-search',
           {
             params: {
               dict: this.key
+            },
+            headers: {
+              Authorization: `Bearer ${this.dataUser.access_token}`
             }
-          },
-          headers
+          }
         );
         if (response.status === 200 || response.status === 201) {
           this.dataPix = response.data.data;
