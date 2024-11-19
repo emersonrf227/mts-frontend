@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const apibanks = axios.create({
-  baseURL: "https://api.acobank.com.br/v1/",
+  baseURL: "https://api.upcapitalpay.com/v1/customers/",
+
   timeout: 10000,
 });
 

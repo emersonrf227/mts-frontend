@@ -15,13 +15,8 @@
             </div>
           </div>
         </div>
-        <card
-          title="Saldo"
-          :value="balance"
-          icon-class="ni ni-money-coins"
-          icon-background="bg-gradient-info"
-          direction-reverse
-        ></card>
+        <card title="Saldo" :value="balance" icon-class="ni ni-money-coins" icon-background="bg-gradient-info"
+          direction-reverse></card>
       </div>
     </div>
     <div class="row">
@@ -42,19 +37,11 @@
               </div>
               <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
                 <div class="bg-gradient-info border-radius-lg h-100">
-                  <img
-                    src="../assets/img/shapes/waves-white.svg"
-                    class="position-absolute h-100 w-50 top-0 d-lg-block d-none"
-                    alt="waves"
-                  />
-                  <div
-                    class="position-relative d-flex align-items-center justify-content-center h-100"
-                  >
-                    <img
-                      class="w-100 position-relative z-index-2 pt-4"
-                      src="../assets/img/illustrations/rocket-white.png"
-                      alt="rocket"
-                    />
+                  <img src="../assets/img/shapes/waves-white.svg"
+                    class="position-absolute h-100 w-50 top-0 d-lg-block d-none" alt="waves" />
+                  <div class="position-relative d-flex align-items-center justify-content-center h-100">
+                    <img class="w-100 position-relative z-index-2 pt-4"
+                      src="../assets/img/illustrations/rocket-white.png" alt="rocket" />
                   </div>
                 </div>
               </div>
@@ -64,16 +51,11 @@
       </div>
       <div class="col-lg-5">
         <div class="card h-100 p-3">
-          <div
-            class="overflow-hidden position-relative border-radius-lg bg-cover h-100"
-            style="
+          <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100" style="
               background-image: url('https://demos.creative-tim.com/soft-ui-dashboard/assets/img/ivancik.jpg');
-            "
-          >
+            ">
             <span class="mask bg-gradient-dark"></span>
-            <div
-              class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3"
-            >
+            <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
               <h5 class="text-white font-weight-bolder mb-4 pt-2">
                 Elaboramos uma api simples e objetiva.
               </h5>
@@ -81,16 +63,10 @@
                 Deseja integrar seu sistema no UpCapitalPay consulte nossas
                 documentações de api`s.
               </p>
-              <a
-                class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto"
-                href="https://api.acobank.com.br/api/v1/"
-                target="_blank"
-              >
+              <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto"
+                href="https://api.acobank.com.br/api/v1/" target="_blank">
                 Saiba mais
-                <i
-                  class="fas fa-arrow-right text-sm ms-1"
-                  aria-hidden="true"
-                ></i>
+                <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
               </a>
             </div>
           </div>
@@ -108,11 +84,7 @@
                   <h5 class="font-weight-bolder">Conta: {{ this.account }}</h5>
                   <h5 class="font-weight-bolder">
                     {{ this.accountStatus === "ACTIVE" ? "ATIVA" : "INATIVA" }}
-                    <i
-                      v-if="accountStatus === 'ACTIVE'"
-                      class="fas fa-dot-circle"
-                      style="color: green"
-                    ></i>
+                    <i v-if="accountStatus === 'ACTIVE'" class="fas fa-dot-circle" style="color: green"></i>
                     <i v-else class="fas fa-dot-circle" style="color: red"></i>
                   </h5>
 
@@ -142,19 +114,11 @@
               </div>
               <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
                 <div class="bg-gradient-info border-radius-lg h-100">
-                  <img
-                    src="../assets/img/shapes/waves-white.svg"
-                    class="position-absolute h-100 w-50 top-0 d-lg-block d-none"
-                    alt="waves"
-                  />
-                  <div
-                    class="position-relative d-flex align-items-center justify-content-center h-100"
-                  >
-                    <img
-                      class="w-100 position-relative z-index-2 pt-4"
-                      src="../assets/img/illustrations/rocket-white.png"
-                      alt="rocket"
-                    />
+                  <img src="../assets/img/shapes/waves-white.svg"
+                    class="position-absolute h-100 w-50 top-0 d-lg-block d-none" alt="waves" />
+                  <div class="position-relative d-flex align-items-center justify-content-center h-100">
+                    <img class="w-100 position-relative z-index-2 pt-4"
+                      src="../assets/img/illustrations/rocket-white.png" alt="rocket" />
                   </div>
                 </div>
               </div>
@@ -211,7 +175,7 @@ export default {
       };
 
       try {
-        const response = await apibanks.get(`baas/account/balance`, headers);
+        const response = await apibanks.get(`account/balance`, headers);
         if (response.status === 200 || response.status === 201) {
           this.balance = `R$: ${response.data.balance}`;
           this.loader = false;
@@ -232,7 +196,7 @@ export default {
         },
       };
       try {
-        const response = await apibanks.get(`baas/account/info`, headers);
+        const response = await apibanks.get(`account/info`, headers);
         if (response.status === 200 || response.status === 201) {
           localStorage.setItem(
             "accountData",

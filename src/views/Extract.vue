@@ -7,26 +7,15 @@
           <div class="row">
             <div class="col-6">
               <span>De</span>
-              <vsud-input
-                type="date"
-                ref="datei"
-                placeholder="Usuário"
-                name="user"
-              />
+              <vsud-input type="date" ref="datei" placeholder="Usuário" name="user" />
             </div>
             <div class="col-6">
               <span>Até</span>
-              <vsud-input
-                type="date"
-                ref="datef"
-                placeholder="Usuário"
-                name="user"
-              />
+              <vsud-input type="date" ref="datef" placeholder="Usuário" name="user" />
             </div>
             <div class="col-12">
               <vsud-button class="my-4 mb-2" variant="gradient" color="info">
-                <i class="fas fa-filter"></i> Filtrar</vsud-button
-              >
+                <i class="fas fa-filter"></i> Filtrar</vsud-button>
             </div>
           </div>
         </div>
@@ -34,23 +23,11 @@
       <div class="row">
         <ExtractTables :extract-list="extract" />
         <div class="flex justify-between my-3 w-full">
-          <span
-            @click="backPage()"
-            :disabled="page === 1"
-            class="px-2 py-1"
-            style="font-size: 40px"
-          >
+          <span @click="backPage()" :disabled="page === 1" class="px-2 py-1" style="font-size: 40px">
             <i class="fas fa-arrow-circle-left"></i>
           </span>
-          <span class="text-center flex-1" style="font-size: 20px"
-            >{{ pagination }} - {{ totalPages }}</span
-          >
-          <span
-            @click="nextPage()"
-            :disabled="pagination >= totalPages"
-            class="px-2 py-1"
-            style="font-size: 40px"
-          >
+          <span class="text-center flex-1" style="font-size: 20px">{{ pagination }} - {{ totalPages }}</span>
+          <span @click="nextPage()" :disabled="pagination >= totalPages" class="px-2 py-1" style="font-size: 40px">
             <i class="fas fa-arrow-circle-right"></i>
           </span>
         </div>
@@ -153,7 +130,7 @@ export default {
       try {
         this.loader = true;
         const response = await apibanks.post(
-          `baas/account/extract`,
+          `account/extract`,
           data,
           headers
         );

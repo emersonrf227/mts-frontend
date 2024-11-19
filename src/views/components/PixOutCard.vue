@@ -166,7 +166,7 @@ export default {
 
       try {
         const response = await apibanks.get(
-          'baas/pix/pix-search',
+          'pix/pix-search',
           {
             params: {
               dict: this.key
@@ -226,7 +226,7 @@ export default {
           amount: this.formattedValue,
         };
         const response = await apibanks.post(
-          `baas/pix/withdraw`,
+          `pix/withdraw`,
           data,
           headers
         );
@@ -262,7 +262,7 @@ export default {
       };
       try {
         const response = await apibanks.get(
-          `baas/pix/status?transactionId=${indentify}`,
+          `pix/status?transactionId=${indentify}`,
           headers
         );
         if (response.status === 200 || response.status === 201) {

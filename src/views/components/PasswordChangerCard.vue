@@ -9,72 +9,36 @@
         </div>
 
         <div class="bg-gradient-info border-radius-lg h-90">
-          <img
-            src="../../assets/img/shapes/waves-white.svg"
-            class="position-absolute h-40 w-50 top-0 d-lg-block d-none"
-            alt="waves"
-          />
-          <div
-            class="position-relative d-flex align-items-center justify-content-center h-100"
-          >
-            <img
-              class="w-40 position-relative z-index-2 pt-4"
-              src="../../assets/img/illustrations/rocket-white.png"
-              alt="rocket"
-            />
+          <img src="../../assets/img/shapes/waves-white.svg" class="position-absolute h-40 w-50 top-0 d-lg-block d-none"
+            alt="waves" />
+          <div class="position-relative d-flex align-items-center justify-content-center h-100">
+            <img class="w-40 position-relative z-index-2 pt-4" src="../../assets/img/illustrations/rocket-white.png"
+              alt="rocket" />
           </div>
         </div>
 
         <div class="Loader-overlay">
           <div class="col-md-4 text-end">
             <a href="javascript:;">
-              <i
-                class="text-sm fas fa-money text-secondary"
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                title="Recharge Pix"
-              ></i>
+              <i class="text-sm fas fa-money text-secondary" data-bs-toggle="tooltip" data-bs-placement="top"
+                title="Recharge Pix"></i>
             </a>
           </div>
-          <form
-            @submit.prevent="changerPassword"
-            role="form"
-            class="text-start"
-          >
+          <form @submit.prevent="changerPassword" role="form" class="text-start">
             <label>Digite a sua nova atual</label>
-            <vsud-input
-              type="text"
-              placeholder="Digite sua Senha Atual"
-              aria-label="Digite sua Senha Atual"
-              v-model="this.actualkey"
-              ref="actualkey"
-            />
+            <vsud-input type="text" placeholder="Digite sua Senha Atual" aria-label="Digite sua Senha Atual"
+              v-model="this.actualkey" ref="actualkey" />
 
             <label>Digite a sua nova senha</label>
-            <vsud-input
-              type="text"
-              placeholder="Digite sua Senha"
-              aria-label="Digite sua Senha"
-              v-model="this.key"
-              ref="key"
-            />
+            <vsud-input type="text" placeholder="Digite sua Senha" aria-label="Digite sua Senha" v-model="this.key"
+              ref="key" />
             <label>Confirme a sua nova senha</label>
 
-            <vsud-input
-              type="text"
-              placeholder="Confirme sua Senha"
-              aria-label="Confirme sua Senha"
-              v-model="this.key"
-              ref="confkey"
-            />
+            <vsud-input type="text" placeholder="Confirme sua Senha" aria-label="Confirme sua Senha" v-model="this.key"
+              ref="confkey" />
 
             <div class="text-center">
-              <vsud-button
-                class="my-4 mb-2"
-                variant="gradient"
-                color="info"
-                full-width
-              >
+              <vsud-button class="my-4 mb-2" variant="gradient" color="info" full-width>
                 Enviar
               </vsud-button>
             </div>
@@ -197,7 +161,7 @@ export default {
           amount: this.formattedValue,
         };
         const response = await apibanks.post(
-          `baas/pix/withdraw`,
+          `pix/withdraw`,
           data,
           headers
         );
@@ -233,7 +197,7 @@ export default {
       };
       try {
         const response = await apibanks.get(
-          `baas/pix/status?transactionId=${indentify}`,
+          `pix/status?transactionId=${indentify}`,
           headers
         );
         if (response.status === 200 || response.status === 201) {
@@ -311,6 +275,7 @@ export default {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }

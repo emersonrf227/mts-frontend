@@ -148,7 +148,7 @@ export default {
           description: formData.description,
         };
         const response = await apibanks.post(
-          `baas/pix/recharge`,
+          `pix/recharge`,
           data,
           headers
         );
@@ -187,7 +187,7 @@ export default {
       };
       try {
         const response = await apibanks.get(
-          `baas/pix/status-invoice?identifier=${indentify}`,
+          `pix/status-invoice?identifier=${indentify}`,
           headers
         );
         if (response.status === 200 || response.status === 201) {

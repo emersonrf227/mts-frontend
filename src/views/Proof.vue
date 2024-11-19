@@ -1,13 +1,10 @@
 <template>
   <div class="container-fluid">
-    <div
-      class="mt-4 page-header min-height-300 border-radius-xl"
-      :style="{
-        backgroundImage: `url(${bgImg})`,
+    <div class="mt-4 page-header min-height-300 border-radius-xl" :style="{
+      backgroundImage: `url(${bgImg})`,
 
-        backgroundPositionY: '50%',
-      }"
-    >
+      backgroundPositionY: '50%',
+    }">
       <span class="mask bg-gradient-success opacity-6"></span>
     </div>
 
@@ -28,56 +25,39 @@
         <div class="card h-100">
           <div class="p-3 pb-0 card-header">
             <div class="row">
-              <span @click="printDiv"
-                ><i class="fa-solid fa fa-print"></i
-              ></span>
+              <span @click="printDiv"><i class="fa-solid fa fa-print"></i></span>
 
               <div class="col-md-8 d-flex align-items-center">
                 <h6 class="mb-4">Comprovante de transação</h6>
               </div>
 
-              <div
-                class="Loader-overlay"
-                style="
+              <div class="Loader-overlay" style="
                   display: flex;
                   flex-direction: column;
 
                   padding: 20px;
-                "
-              >
+                ">
                 <div class="col-md-8 d-flex align-items-center">
                   <h3 class="mb-4">Transação:</h3>
                 </div>
                 <div class="align-items-center">
                   <h6 class="mb-4">
                     Tipo:
-                    <vsud-badge
-                      :color="
-                        this.proof.type === 'CREDIT' ? 'success' : 'danger'
-                      "
-                      variant="gradient"
-                      size="sm"
-                      >{{
+                    <vsud-badge :color="this.proof.type === 'CREDIT' ? 'success' : 'danger'
+                      " variant="gradient" size="sm">{{
                         this.proof.type === "CREDIT" ? "CREDITO" : "DEBITO"
-                      }}</vsud-badge
-                    >
+                      }}</vsud-badge>
                   </h6>
                 </div>
                 <div class="align-items-center">
                   <h6 class="mb-4">
                     Status:
-                    <vsud-badge
-                      :color="
-                        this.proof.status === 'COMPLETED' ? 'success' : 'danger'
-                      "
-                      variant="gradient"
-                      size="sm"
-                      >{{
+                    <vsud-badge :color="this.proof.status === 'COMPLETED' ? 'success' : 'danger'
+                      " variant="gradient" size="sm">{{
                         this.proof.status === "COMPLETED"
                           ? "COMPLETED"
                           : "ERROR"
-                      }}</vsud-badge
-                    >
+                      }}</vsud-badge>
                   </h6>
                 </div>
 
@@ -114,7 +94,7 @@
                   <h5 class="mb-2">Data</h5>
                   <span class="mb-4">{{
                     formatDate(this.proof.createdAt)
-                  }}</span>
+                    }}</span>
                 </div>
                 <div class="align-items-center">
                   <h6 class="mb-4">
@@ -131,8 +111,7 @@
       </div>
     </div>
     <span @click="goBack">
-      <i class="fa-solid fa fa-arrow-left"></i> Voltar</span
-    >
+      <i class="fa-solid fa fa-arrow-left"></i> Voltar</span>
   </div>
 </template>
 
@@ -216,7 +195,7 @@ export default {
 
       try {
         const response = await apibanks.get(
-          `baas/pix/status?transactionId=${this.id}`,
+          `pix/status?transactionId=${this.id}`,
           headers
         );
         if (response.status === 200 || response.status === 201) {
@@ -248,10 +227,12 @@ export default {
   body * {
     visibility: hidden;
   }
+
   #printArea,
   #printArea * {
     visibility: visible;
   }
+
   #printArea {
     position: absolute;
     left: 0;
