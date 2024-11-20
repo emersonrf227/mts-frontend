@@ -47,9 +47,6 @@
 
           <div style="display: flex; flex-direction: column">
             <label>Banco: {{ dataPix.bankName }}</label>
-            <label>Conta: {{ dataPix.account }}</label>
-            <label>Agência: {{ dataPix.agency }}</label>
-            <label>Tipo Chave: {{ dataPix.keyType }}</label>
             <label>Chave: {{ dataPix.dictKey }}</label>
             <label>Recebedor: {{ dataPix.name }}</label>
           </div>
@@ -75,6 +72,9 @@
           <form @submit.prevent="SendPixin" role="form" class="text-start">
             <label>Valor</label>
             <vsud-input type="text" placeholder="10.00" aria-label="Digite o valor" step="0.01" min="0" ref="amount" />
+
+            <label>Documento Recebedor</label>
+            <vsud-input type="text" placeholder="999999999" aria-label="Digite um documento valido" ref="document" />
 
             <div class="text-center">
               <vsud-button class="my-4 mb-2" variant="gradient" color="info" full-width>
@@ -200,6 +200,8 @@ export default {
       this.loader = true;
       const authData = JSON.parse(localStorage.getItem("authentication"));
       this.dataUser = authData.data;
+      this.document = this.$refs.document.$el.querySelector("input").value
+
 
       const headers = {
         headers: {
@@ -217,10 +219,14 @@ export default {
           return;
         }
 
+        if (this.document === "") {
+          this.showAlert("success", `Digite um cpf ou cnpj  valido no documento`, 6000, false);
+          return;
+        }
+
         const data = {
           externalId: timestampInSeconds,
-          keyType:
-            this.dataPix.keyType === "E-MAIL" ? "EMAIL" : this.dataPix.keyType === 'CELULAR' ? 'PHONE' : this.dataPix.keyType,
+          documentNumber: Number(this.document),
           key: this.dataPix.dictKey,
           name: this.dataPix.name,
           amount: this.formattedValue,
