@@ -158,40 +158,13 @@ export default {
 
     async getDict() {
       this.key = this.$refs.key.$el.querySelector("input").value;
-
       this.loader = true;
       const authData = JSON.parse(localStorage.getItem("authentication"));
       this.dataUser = authData.data;
-
-
-      try {
-        const response = await apibanks.get(
-          'pix/pix-search',
-          {
-            params: {
-              dict: this.key
-            },
-            headers: {
-              Authorization: `Bearer ${this.dataUser.access_token}`
-            }
-          }
-        );
-        if (response.status === 200 || response.status === 201) {
-          this.dataPix = response.data.data;
-          this.stageOne = false;
-          this.stageTwo = true;
-        }
-      } catch (e) {
-        this.loader = false;
-        this.showAlert(
-          "danger",
-          `${JSON.stringify(e.response.data.message)}`,
-          6000,
-          false
-        );
-      } finally {
-        this.loader = false;
-      }
+      this.stageOne = false;
+      this.stageTwo = false;
+      this.stageThree = true;
+      this.loader = false;
     },
 
     async SendPixin() {
@@ -226,11 +199,11 @@ export default {
 
         const data = {
           externalId: timestampInSeconds,
-          documentNumber: Number(this.document),
-          key: this.dataPix.dictKey,
-          name: this.dataPix.name,
-          amount: this.formattedValue,
+          key: this.key,
+          amount: this.formattedValue
         };
+
+
         const response = await apibanks.post(
           `pix/withdraw`,
           data,

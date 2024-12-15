@@ -57,6 +57,12 @@
             <label>Descrição</label>
             <vsud-input type="text" placeholder="Descrição" aria-label="Descrição" ref="description" />
 
+            <label>Nome</label>
+            <vsud-input type="text" placeholder="Nome" aria-label="Nome" ref="name" />
+
+            <label>Documento</label>
+            <vsud-input type="text" placeholder="Documento" aria-label="Documento" ref="document" />
+
             <div class="text-center">
               <vsud-button class="my-4 mb-2" variant="gradient" color="info" full-width>
                 Enviar</vsud-button>
@@ -74,6 +80,8 @@ import VsudButton from "@/components/VsudButton.vue";
 import apibanks from "../../core/infraestructure/http/api";
 import Loader from "./Loader.vue";
 import QrcodeVue from "qrcode.vue";
+import { v4 as uuidv4 } from 'uuid';
+
 export default {
   name: "PixInCard",
   components: {
@@ -141,14 +149,24 @@ export default {
         const formData = {
           amount: this.formattedValue,
           description: this.$refs.description.$el.querySelector("input").value,
+          name: this.$refs.name.$el.querySelector("input").value,
+          document: this.$refs.document.$el.querySelector("input").value,
+
         };
 
+
         const data = {
+          externalId: uuidv4(),
           amount: formData.amount,
           description: formData.description,
+          identification: uuidv4(),
+          document: formData.document,
+          name: formData.name,
+          expire: 3600
+
         };
         const response = await apibanks.post(
-          `pix/recharge`,
+          `pix/create-immediate-qrcode`,
           data,
           headers
         );
@@ -158,6 +176,7 @@ export default {
           this.startPixStatusPolling(this.identifier);
         }
       } catch (e) {
+
         this.loader = false;
         this.showAlert(
           "danger",
