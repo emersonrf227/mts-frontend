@@ -103,6 +103,37 @@
                     }}:{{ this.id }}
                   </h6>
                 </div>
+
+                <div class="col-md-8 d-flex align-items-center">
+                  <h3 class="mb-4">Liquidante:</h3>
+                </div>
+                <div class="align-items-center">
+                  <h6 class="mb-4">
+                    Nome: DF Participações LTDA
+                  </h6>
+                </div>
+
+                <div class="align-items-center">
+                  <h6 class="mb-4">
+                    Documento: 57841833000100
+                  </h6>
+                </div>
+
+                <div class="align-items-center">
+                  <h6 class="mb-4">
+                    Instituição: COOP CREDITAG
+                  </h6>
+                </div>
+                <div class="align-items-center">
+                  <h6 class="mb-4">
+                    Agencia: 0001
+                  </h6>
+                </div>
+                <div class="align-items-center">
+                  <h6 class="mb-4">
+                    Conta: 21602
+                  </h6>
+                </div>
                 <div class="LoaderPix"></div>
               </div>
             </div>
