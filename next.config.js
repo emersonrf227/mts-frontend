@@ -15,11 +15,7 @@ const nextConfig = {
     ]
   },
   transpilePackages: ['geist'],
-  reactStrictMode: false,
-
-  eslint: {
-    ignoreDuringBuilds: true
-  }
+  reactStrictMode: false
 };
 
 module.exports = nextConfig;
