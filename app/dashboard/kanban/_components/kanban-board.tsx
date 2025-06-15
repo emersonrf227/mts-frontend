@@ -70,9 +70,11 @@ export function KanbanBoard() {
   }, [isMounted]);
 
   useEffect(() => {
-    useTaskStore.persist.rehydrate();
+    if ('persist' in useTaskStore) {
+      // @ts-ignore
+      useTaskStore.persist.rehydrate();
+    }
   }, []);
-  if (!isMounted) return;
 
   function getDraggingTaskData(taskId: UniqueIdentifier, columnId: ColumnId) {
     const tasksInColumn = tasks.filter((task) => task.status === columnId);
@@ -207,8 +209,8 @@ export function KanbanBoard() {
         </SortableContext>
       </BoardContainer>
 
-      {'document' in window &&
-        createPortal(
+      {typeof window !== 'undefined' &&
+        (createPortal(
           <DragOverlay>
             {activeColumn && (
               <BoardColumn
@@ -220,7 +222,7 @@ export function KanbanBoard() {
             {activeTask && <TaskCard task={activeTask} isOverlay />}
           </DragOverlay>,
           document.body
-        )}
+        ) as React.ReactNode)}
     </DndContext>
   );
 

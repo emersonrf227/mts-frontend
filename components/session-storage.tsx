@@ -5,7 +5,10 @@ import { useEffect } from 'react';
 export function SessionStorage({ session }: { session: any }) {
   useEffect(() => {
     if (session) {
-      localStorage.setItem('@app-dubaicash/userSession', JSON.stringify(session));
+      localStorage.setItem(
+        '@app-dubaicash/userSession',
+        JSON.stringify(session)
+      );
     }
   }, [session]);
 

@@ -5,7 +5,5 @@ export const metadata = {
 };
 
 export default function PixKeysPage() {
-  return (
-    <PixTable />
-  );
+  return <PixTable />;
 }

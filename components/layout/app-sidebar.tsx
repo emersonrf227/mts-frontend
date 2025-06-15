@@ -56,7 +56,7 @@ export default function AppSidebar({
   React.useEffect(() => {
     setSecondaryColor(theme.secondaryColor);
     setFontColor(theme.fontColor);
-  }, [theme.SecondaryColor]);
+  }, []);
 
   // Only render after first client-side mount
   React.useEffect(() => {

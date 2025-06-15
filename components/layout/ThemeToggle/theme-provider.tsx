@@ -1,11 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import {
-  ThemeProvider as NextThemesProvider,
-  type ThemeProviderProps
-} from 'next-themes';
-import { number, string } from 'zod';
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
 
 type ThemeConfig = {
   id: number;
@@ -51,6 +47,9 @@ const ThemeContext = createContext<ThemeConfig>(defaultTheme);
 
 export const useTheme = () => useContext(ThemeContext);
 
+// Pega o tipo correto das props do NextThemesProvider
+type ThemeProviderProps = React.ComponentProps<typeof NextThemesProvider>;
+
 export default function ThemeProvider({
   children,
   ...props
@@ -62,10 +61,9 @@ export default function ThemeProvider({
     const fetchTheme = async () => {
       const cached = sessionStorage.getItem('themeConfig');
       if (cached) {
-        console.log('pegou do cash');
+        console.log('pegou do cache');
         setTheme(JSON.parse(cached));
         setIsLoading(false);
-
         return;
       }
 
@@ -88,9 +86,7 @@ export default function ThemeProvider({
     fetchTheme();
   }, []);
 
-  if (isLoading) {
-    return null;
-  }
+  if (isLoading) return null;
 
   return (
     <NextThemesProvider {...props}>

@@ -18,7 +18,7 @@ export default function PlataformPage() {
           />
         </div>
         <Separator />
-       <Page />
+        <Page />
       </div>
     </PageContainer>
   );

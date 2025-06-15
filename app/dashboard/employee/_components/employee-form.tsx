@@ -58,9 +58,9 @@ export default function EmployeeForm() {
   }
 
   return (
-    <Card className="w-full mx-auto">
+    <Card className="mx-auto w-full">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold text-left">
+        <CardTitle className="text-left text-2xl font-bold">
           Employee Information
         </CardTitle>
       </CardHeader>

@@ -56,16 +56,16 @@ const Pagination = ({ pagination, onChange }: IPaginationProps) => {
   };
 
   return (
-    <div className='flex flex-col items-center justify-between gap-3'>
+    <div className="flex flex-col items-center justify-between gap-3">
       <div className="flex items-center justify-center space-x-2">
         <Button
           variant="outline"
           size="icon"
           disabled={page === 1}
           onClick={() => handlePageChange(1)}
-          className="w-8 h-8"
+          className="h-8 w-8"
         >
-          <ChevronsLeft className="w-4 h-4" />
+          <ChevronsLeft className="h-4 w-4" />
         </Button>
 
         <Button
@@ -73,9 +73,9 @@ const Pagination = ({ pagination, onChange }: IPaginationProps) => {
           size="icon"
           disabled={page === 1}
           onClick={() => handlePageChange(page - 1)}
-          className="w-8 h-8"
+          className="h-8 w-8"
         >
-          <ChevronLeft className="w-4 h-4" />
+          <ChevronLeft className="h-4 w-4" />
         </Button>
 
         {getPageNumbers().map((pageNumber) => (
@@ -84,7 +84,7 @@ const Pagination = ({ pagination, onChange }: IPaginationProps) => {
             variant={pageNumber === page ? 'default' : 'outline'}
             size="icon"
             onClick={() => handlePageChange(pageNumber)}
-            className="w-8 h-8"
+            className="h-8 w-8"
           >
             {pageNumber}
           </Button>
@@ -95,9 +95,9 @@ const Pagination = ({ pagination, onChange }: IPaginationProps) => {
           size="icon"
           disabled={page === totalPages}
           onClick={() => handlePageChange(page + 1)}
-          className="w-8 h-8"
+          className="h-8 w-8"
         >
-          <ChevronRight className="w-4 h-4" />
+          <ChevronRight className="h-4 w-4" />
         </Button>
 
         <Button
@@ -105,9 +105,9 @@ const Pagination = ({ pagination, onChange }: IPaginationProps) => {
           size="icon"
           disabled={page === totalPages}
           onClick={() => handlePageChange(totalPages)}
-          className="w-8 h-8"
+          className="h-8 w-8"
         >
-          <ChevronsRight className="w-4 h-4" />
+          <ChevronsRight className="h-4 w-4" />
         </Button>
       </div>
       <div className="ml-4 text-sm text-gray-500">

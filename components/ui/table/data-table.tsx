@@ -113,12 +113,17 @@ export function DataTable<TData, TValue>({
             ))}
           </TableHeader>
           <TableBody>
-          <TableRow>
-              { loading && <TableCell colSpan={columns.length} className='h-24 text-center'>
-                <div className='flex items-center justify-center'>
-                  <LoaderIcon className='animate-spin' />
-                </div>
-              </TableCell>}
+            <TableRow>
+              {loading && (
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
+                  <div className="flex items-center justify-center">
+                    <LoaderIcon className="animate-spin" />
+                  </div>
+                </TableCell>
+              )}
             </TableRow>
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
@@ -151,8 +156,8 @@ export function DataTable<TData, TValue>({
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
 
-      <div className="flex flex-col items-center justify-end gap-2 py-4 space-x-2 sm:flex-row">
-        <div className="flex items-center justify-between w-full">
+      <div className="flex flex-col items-center justify-end gap-2 space-x-2 py-4 sm:flex-row">
+        <div className="flex w-full items-center justify-between">
           <div className="flex-1 text-sm text-muted-foreground">
             {totalItems > 0 ? (
               <>
@@ -170,7 +175,7 @@ export function DataTable<TData, TValue>({
           </div>
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6 lg:gap-8">
             <div className="flex items-center space-x-2">
-              <p className="text-sm font-medium whitespace-nowrap">
+              <p className="whitespace-nowrap text-sm font-medium">
                 Rows per page
               </p>
               <Select
@@ -193,7 +198,7 @@ export function DataTable<TData, TValue>({
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-between w-full gap-2 sm:justify-end">
+        <div className="flex w-full items-center justify-between gap-2 sm:justify-end">
           <div className="flex w-[150px] items-center justify-center text-sm font-medium">
             {totalItems > 0 ? (
               <>
@@ -207,38 +212,38 @@ export function DataTable<TData, TValue>({
             <Button
               aria-label="Go to first page"
               variant="outline"
-              className="hidden w-8 h-8 p-0 lg:flex"
+              className="hidden h-8 w-8 p-0 lg:flex"
               onClick={() => table.setPageIndex(0)}
               disabled={!table.getCanPreviousPage()}
             >
-              <DoubleArrowLeftIcon className="w-4 h-4" aria-hidden="true" />
+              <DoubleArrowLeftIcon className="h-4 w-4" aria-hidden="true" />
             </Button>
             <Button
               aria-label="Go to previous page"
               variant="outline"
-              className="w-8 h-8 p-0"
+              className="h-8 w-8 p-0"
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
             >
-              <ChevronLeftIcon className="w-4 h-4" aria-hidden="true" />
+              <ChevronLeftIcon className="h-4 w-4" aria-hidden="true" />
             </Button>
             <Button
               aria-label="Go to next page"
               variant="outline"
-              className="w-8 h-8 p-0"
+              className="h-8 w-8 p-0"
               onClick={() => table.nextPage()}
               disabled={!table.getCanNextPage()}
             >
-              <ChevronRightIcon className="w-4 h-4" aria-hidden="true" />
+              <ChevronRightIcon className="h-4 w-4" aria-hidden="true" />
             </Button>
             <Button
               aria-label="Go to last page"
               variant="outline"
-              className="hidden w-8 h-8 p-0 lg:flex"
+              className="hidden h-8 w-8 p-0 lg:flex"
               onClick={() => table.setPageIndex(table.getPageCount() - 1)}
               disabled={!table.getCanNextPage()}
             >
-              <DoubleArrowRightIcon className="w-4 h-4" aria-hidden="true" />
+              <DoubleArrowRightIcon className="h-4 w-4" aria-hidden="true" />
             </Button>
           </div>
         </div>

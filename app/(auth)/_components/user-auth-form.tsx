@@ -19,7 +19,9 @@ import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 
 const formSchema = z.object({
-  username: z.string().min(4, { message: 'Entre com um nome de usuário válido' }),
+  username: z
+    .string()
+    .min(4, { message: 'Entre com um nome de usuário válido' }),
   password: z.string().min(4, { message: 'Entre com uma senha válida' })
 });
 
@@ -40,12 +42,12 @@ export default function UserAuthForm() {
   });
 
   const onSubmit = async (data: UserFormValue) => {
-    startTransition(async() => {
+    startTransition(async () => {
       signIn('credentials', {
         username: data.username,
         password: data.password,
         callbackUrl: callbackUrl ?? '/dashboard'
-      })
+      });
     });
   };
 
@@ -57,12 +59,10 @@ export default function UserAuthForm() {
           className="w-full space-y-2"
         >
           {isError && (
-              <Alert variant="destructive">
-              <AlertCircle className="w-4 h-4" />
+            <Alert variant="destructive">
+              <AlertCircle className="h-4 w-4" />
               <AlertTitle>Falha</AlertTitle>
-              <AlertDescription>
-                Login ou senha inválida
-              </AlertDescription>
+              <AlertDescription>Login ou senha inválida</AlertDescription>
             </Alert>
           )}
           <FormField
@@ -102,7 +102,11 @@ export default function UserAuthForm() {
             )}
           />
 
-          <Button disabled={loading} className="w-full ml-auto text-white" type="submit">
+          <Button
+            disabled={loading}
+            className="ml-auto w-full text-white"
+            type="submit"
+          >
             Entrar
           </Button>
         </form>

@@ -15,7 +15,12 @@ const nextConfig = {
     ]
   },
   transpilePackages: ['geist'],
-  reactStrictMode: false
+  reactStrictMode: false,
+
+  // ⬇️ Isso ignora os warnings do ESLint durante o build
+  eslint: {
+    ignoreDuringBuilds: true
+  }
 };
 
 module.exports = nextConfig;

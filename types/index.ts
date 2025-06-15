@@ -33,21 +33,19 @@ export type MainNavItem = NavItemWithOptionalChildren;
 
 export type SidebarNavItem = NavItemWithChildren;
 
-
 export interface IAuth {
-  statusCode: number
-  data: IAuthData
-  access_token: string
-  timeout: string
+  statusCode: number;
+  data: IAuthData;
+  access_token: string;
+  timeout: string;
 }
 
 interface IAuthData {
-  id: number
-  uuid: string
-  name: string
-  username: string
-  type: string
-  active: boolean
-  forceReset: boolean
+  id: number;
+  uuid: string;
+  name: string;
+  username: string;
+  type: string;
+  active: boolean;
+  forceReset: boolean;
 }
-

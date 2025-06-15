@@ -1,6 +1,12 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form';
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage
+} from '../ui/form';
 import { Input } from '../ui/input';
 import { UseFormReturn } from 'react-hook-form';
 import { formatMoney } from '@/lib/utils';
@@ -15,11 +21,10 @@ type MoneyInputProps = {
   disabled?: boolean;
 };
 
-
 export const MoneyInput = (props: MoneyInputProps) => {
-  const [inputValue, setInputValue] = useState<string>(props.value ? formatMoney(Number(props.value)) : '');
-
- 
+  const [inputValue, setInputValue] = useState<string>(
+    props.value ? formatMoney(Number(props.value)) : ''
+  );
 
   useEffect(() => {
     const formValue = props.form.getValues(props.name);

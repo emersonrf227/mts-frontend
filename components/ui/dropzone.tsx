@@ -21,7 +21,6 @@ export function Dropzone({
   const [fileInfo, setFileInfo] = useState<string | null>(null); // Information about the uploaded file
   const [error, setError] = useState<string | null>(null); // Error message state
 
-
   // Function to handle drag over event
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -77,7 +76,7 @@ export function Dropzone({
       {...props}
     >
       <CardContent
-        className="flex flex-col items-center justify-center px-2 py-4 space-y-2 text-xs"
+        className="flex flex-col items-center justify-center space-y-2 px-2 py-4 text-xs"
         onDragOver={handleDragOver}
         onDrop={handleDrop}
       >
@@ -86,7 +85,7 @@ export function Dropzone({
           <Button
             variant="ghost"
             size="sm"
-            className="flex h-8 px-0 pl-1 ml-auto space-x-2 text-xs"
+            className="ml-auto flex h-8 space-x-2 px-0 pl-1 text-xs"
             onClick={handleButtonClick}
           >
             Click Here
